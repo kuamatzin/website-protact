@@ -946,6 +946,40 @@ section {
   color: #fff;
 }
 
+.cta-btn-whats {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid rgba(36, 211, 102, 1.00) !important;
+  color: rgba(36, 211, 102, 1.00) !important;
+}
+
+.cta-btn-whats-inverter {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid rgba(36, 211, 102, 1.00) !important;
+  color: white !important;
+  background: rgba(36, 211, 102, 1.00) !important;
+}
+
+.cta-btn-whats:hover {
+  background: rgba(36, 211, 102, 1.00) !important;
+  color: white !important;
+}
+
 .cta .cta-btn:hover {
   background: #fb0825;
   border: 2px solid #fb0825;
