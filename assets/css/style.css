@@ -1707,6 +1707,428 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Encuentro Gasolinero Event Section
+--------------------------------------------------------------*/
+.evento-gasolinero {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.evento-gasolinero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201, 35, 44, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.evento-banner {
+  background: white;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.evento-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #fb0825, #c9232c);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 35, 44, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(201, 35, 44, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 35, 44, 0);
+  }
+}
+
+.evento-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2c2c2c;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.evento-location {
+  color: #c9232c;
+  font-size: 42px;
+}
+
+.evento-description {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.evento-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-item i {
+  font-size: 24px;
+  color: #c9232c;
+}
+
+.detail-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item strong {
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item span {
+  font-size: 15px;
+  color: #2c2c2c;
+  font-weight: 600;
+}
+
+.evento-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.highlight-item i {
+  color: #28a745;
+  font-size: 18px;
+}
+
+.highlight-item span {
+  color: #555;
+  font-size: 15px;
+}
+
+.evento-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.btn-register {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #c9232c, #fb0825);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(201, 35, 44, 0.3);
+}
+
+.btn-register:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(201, 35, 44, 0.4);
+  color: white;
+}
+
+.btn-agenda {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: #c9232c;
+  padding: 14px 30px;
+  border: 2px solid #c9232c;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-agenda:hover {
+  background: #c9232c;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.evento-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 15px 25px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #c9232c;
+}
+
+.price-label {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.price-amount {
+  color: #c9232c;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.price-note {
+  color: #999;
+  font-size: 14px;
+}
+
+.evento-visual {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.gas-pump-icon {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.floating-badge {
+  position: absolute;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floating-badge i {
+  color: #c9232c;
+}
+
+.top-badge {
+  top: 10px;
+  right: 10px;
+  animation: slideInRight 1s ease-out;
+}
+
+.bottom-badge {
+  bottom: 10px;
+  right: 10px;
+  animation: slideInRight 1s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.countdown-container {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  text-align: center;
+}
+
+.countdown-container h4 {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-value {
+  background: linear-gradient(90deg, #c9232c, #fb0825);
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.countdown-label {
+  color: #999;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .evento-banner {
+    padding: 40px 30px;
+  }
+  
+  .evento-title {
+    font-size: 36px;
+  }
+  
+  .evento-location {
+    font-size: 32px;
+  }
+  
+  .evento-visual {
+    margin-top: 40px;
+  }
+  
+  .floating-badge {
+    position: relative;
+    display: inline-flex;
+    margin: 10px 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .evento-banner {
+    padding: 30px 20px;
+  }
+  
+  .evento-title {
+    font-size: 28px;
+  }
+  
+  .evento-location {
+    font-size: 26px;
+  }
+  
+  .evento-details {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .evento-actions {
+    flex-direction: column;
+  }
+  
+  .btn-register,
+  .btn-agenda {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .countdown-timer {
+    gap: 10px;
+  }
+  
+  .countdown-value {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .evento-gasolinero {
+    padding: 60px 0;
+  }
+  
+  .evento-title {
+    font-size: 24px;
+  }
+  
+  .evento-location {
+    font-size: 22px;
+  }
+  
+  .gas-pump-icon {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 #footer {
