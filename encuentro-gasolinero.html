@@ -182,6 +182,150 @@
       top: 50%;
       transform: translateY(-50%);
     }
+    
+    /* Agenda Section Styles */
+    .agenda-section {
+      padding: 80px 0;
+      background: white;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-title h2 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #2c2c2c;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+    .section-title p {
+      font-size: 18px;
+      color: #5e5e5e;
+      font-weight: 500;
+    }
+    .agenda-container {
+      position: relative;
+      padding: 0 20px;
+    }
+    .agenda-container::before {
+      content: '';
+      position: absolute;
+      left: 50px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: #e4e4e4;
+    }
+    .agenda-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 35px;
+      position: relative;
+      padding-left: 100px;
+      min-height: 60px;
+    }
+    .agenda-item::before {
+      content: '';
+      position: absolute;
+      left: 44px;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border: 3px solid #c9232c;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .time-badge {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(90deg, #c9232c, #fb0825);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 3px 10px rgba(201, 35, 44, 0.2);
+      min-width: 100px;
+      text-align: center;
+    }
+    .agenda-content {
+      background: #f8f9fa;
+      padding: 20px 25px;
+      border-radius: 10px;
+      flex: 1;
+      margin-left: 30px;
+      transition: all 0.3s ease;
+      border-left: 3px solid #c9232c;
+    }
+    .agenda-content:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    .agenda-content h4 {
+      color: #2c2c2c;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .agenda-content p {
+      color: #666;
+      font-size: 15px;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      .section-title h2 {
+        font-size: 36px;
+      }
+      .agenda-container::before {
+        left: 20px;
+      }
+      .agenda-item {
+        padding-left: 50px;
+        margin-bottom: 25px;
+      }
+      .agenda-item::before {
+        left: 14px;
+      }
+      .time-badge {
+        position: relative;
+        left: auto;
+        top: auto;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+      .agenda-content {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+      .agenda-item {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .agenda-section {
+        padding: 60px 0;
+      }
+      .section-title h2 {
+        font-size: 28px;
+      }
+      .agenda-content {
+        padding: 15px 20px;
+      }
+      .agenda-content h4 {
+        font-size: 16px;
+      }
+      .agenda-content p {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 
@@ -198,9 +342,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link" href="/">Inicio</a></li>
+          <li><a class="nav-link" href="#agenda">Agenda</a></li>
           <li><a class="nav-link" href="/#about">Nosotros</a></li>
           <li><a class="nav-link" href="/#services">Servicios</a></li>
-          <li><a class="nav-link" href="/#portfolio">Portafolio</a></li>
           <li><a class="nav-link" href="/#team">Equipo</a></li>
           <li><a class="nav-link" href="/#contact">Contacto</a></li>
           <li><a class="getstarted" href="#registro">Registrarse</a></li>
@@ -220,6 +364,90 @@
       </div>
     </section><!-- End Event Hero -->
 
+    <!-- ======= Event Agenda Section ======= -->
+    <section id="agenda" class="agenda-section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>AGENDA</h2>
+          <p>ENCUENTRO GASOLINERO PUEBLA 2025</p>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="agenda-container">
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="time-badge">9:00-9:20</div>
+                <div class="agenda-content">
+                  <h4>Registro</h4>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="150">
+                <div class="time-badge">9:20-9:30</div>
+                <div class="agenda-content">
+                  <h4>Mensaje de bienvenida</h4>
+                  <p>Ing. Carlos Cuamatzin<br>CEO de Grupo Protact</p>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="time-badge">9:30-10:00</div>
+                <div class="agenda-content">
+                  <h4>Desayuno</h4>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="250">
+                <div class="time-badge">10:00-10:40</div>
+                <div class="agenda-content">
+                  <h4>Impacto Ambiental: Riesgos, Responsabilidades y Obligaciones</h4>
+                  <p>Ing. Omar Acoltzí</p>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="time-badge">10:40-11:20</div>
+                <div class="agenda-content">
+                  <h4>La Situación Actual del Mercado de Combustibles</h4>
+                  <p>Mtro. Alejandro Montufar</p>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="350">
+                <div class="time-badge">11:20-11:30</div>
+                <div class="agenda-content">
+                  <h4>Proveedores</h4>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="time-badge">11:30-12:00</div>
+                <div class="agenda-content">
+                  <h4>Anexo 30 y 31 para Estaciones de Servicio</h4>
+                  <p>Ing. Edgar Santillán</p>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="450">
+                <div class="time-badge">12:00-12:40</div>
+                <div class="agenda-content">
+                  <h4>CNE: La Nueva Comisión Nacional de Energía</h4>
+                  <p>Ing. Enrique Loyo</p>
+                </div>
+              </div>
+
+              <div class="agenda-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="time-badge">12:40-13:00</div>
+                <div class="agenda-content">
+                  <h4>Agradecimiento y cierre</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Event Agenda Section -->
+
     <!-- ======= Registration Form Section ======= -->
     <section id="registro" class="form-section">
       <div class="container" data-aos="fade-up">
@@ -231,17 +459,17 @@
                 <p>Complete el formulario para reservar su lugar</p>
               </div>
 
-              <form action="https://formbold.com/s/3VAO9" method="POST" class="event-form" id="eventRegistrationForm">
+              <form class="event-form" id="eventRegistrationForm">
                 <div class="row">
                   <div class="col-md-12 form-group">
-                    <label for="nombre">Nombre Completo <span class="required-field">*</span></label>
+                    <label for="nombre">Nombre Completo (Contacto Principal) <span class="required-field">*</span></label>
                     <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese su nombre completo" required>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-12 form-group">
-                    <label for="empresa">Empresa o Razón Social<span class="required-field">*</span></label>
+                    <label for="empresa">Empresa o Razón Social <span class="required-field">*</span></label>
                     <input type="text" name="empresa" class="form-control" id="empresa" placeholder="Nombre de su empresa" required>
                   </div>
                 </div>
@@ -252,22 +480,86 @@
                     <input type="tel" name="telefono" class="form-control" id="telefono" placeholder="10 dígitos" pattern="[0-9]{10}" required>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label for="correo">Correo Electrónico</label>
-                    <input type="email" name="correo" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+                    <label for="correo">Correo Electrónico <span class="required-field">*</span></label>
+                    <input type="email" name="correo" class="form-control" id="correo" placeholder="ejemplo@correo.com" required>
                   </div>
                 </div>
 
-                <input type="hidden" name="evento" value="Encuentro Gasolinero Protact">
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <label for="num_seats">Número de Asientos <span class="required-field">*</span></label>
+                    <select name="num_seats" class="form-control" id="num_seats" required>
+                      <option value="">Seleccione cantidad de asientos</option>
+                      <option value="1">1 asiento - $1,800 + IVA ($2,088 MXN)</option>
+                      <option value="2">2 asientos - $3,600 + IVA ($4,176 MXN)</option>
+                      <option value="3">3 asientos - $5,400 + IVA ($6,264 MXN)</option>
+                      <option value="4">4 asientos - $7,200 + IVA ($8,352 MXN)</option>
+                      <option value="5">5 asientos - $9,000 + IVA ($10,440 MXN)</option>
+                      <option value="6">6 asientos - $10,800 + IVA ($12,528 MXN)</option>
+                      <option value="7">7 asientos - $12,600 + IVA ($14,616 MXN)</option>
+                      <option value="8">8 asientos - $14,400 + IVA ($16,704 MXN)</option>
+                      <option value="9">9 asientos - $16,200 + IVA ($18,792 MXN)</option>
+                      <option value="10">10 asientos - $18,000 + IVA ($20,880 MXN)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div id="attendee-fields" style="display: none;">
+                  <div class="form-group">
+                    <label style="color: #c9232c; font-weight: 600; margin-bottom: 15px; display: block;">
+                      <i class="bi bi-people-fill"></i> Nombres de los Asistentes
+                    </label>
+                    <div id="attendee-names-container">
+                      <!-- Dynamic fields will be added here -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="requires_invoice" name="requires_invoice">
+                      <label class="form-check-label" for="requires_invoice" style="margin-left: 10px;">
+                        Requiero factura
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="invoice-fields" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="invoice_file">Constancia de Situación Fiscal (PDF) <span class="required-field">*</span></label>
+                      <input type="file" name="invoice_file" class="form-control" id="invoice_file" accept=".pdf">
+                      <small class="text-muted">Por favor suba su constancia de situación fiscal en formato PDF</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" style="display: none;" id="total-section">
+                  <div class="col-md-12">
+                    <div style="background: #f0f0f0; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                      <h4 style="color: #c9232c; margin: 0;">Total a Pagar: <span id="total-amount">$0 MXN</span></h4>
+                    </div>
+                  </div>
+                </div>
+
+                <input type="hidden" name="evento" value="Encuentro Gasolinero Puebla 2025">
                 <input type="hidden" name="fecha_registro" id="fecha_registro">
 
                 <div class="text-center">
-                  <button type="submit" class="submit-btn">Confirmar Registro</button>
+                  <button type="submit" class="submit-btn" id="submit-button">Proceder al Pago</button>
                 </div>
 
                 <div class="my-3">
-                  <div class="loading" style="display: none;">Cargando...</div>
-                  <div class="error-message" style="display: none; color: #dc3545;"></div>
-                  <div class="sent-message" style="display: none; color: #28a745;">¡Su registro ha sido enviado exitosamente! Nos pondremos en contacto pronto.</div>
+                  <div class="loading" id="loading-message" style="display: none;">
+                    <div class="spinner-border text-danger" role="status" style="width: 20px; height: 20px; margin-right: 10px;">
+                      <span class="sr-only"></span>
+                    </div>
+                    Procesando su registro...
+                  </div>
+                  <div class="error-message" id="error-message" style="display: none; color: #dc3545;"></div>
+                  <div class="sent-message" id="success-message" style="display: none; color: #28a745;">Redirigiendo al sistema de pago...</div>
                 </div>
               </form>
             </div>
@@ -398,27 +690,214 @@
 
   <!-- Custom Form Validation -->
   <script>
+    // API endpoint (update with your Laravel backend URL)
+    const API_URL = 'http://localhost:8000/api'; // Update this to your production URL
+
     // Set current date
     document.getElementById('fecha_registro').value = new Date().toISOString();
 
-    // Form validation
-    document.getElementById('eventRegistrationForm').addEventListener('submit', function(e) {
-      const telefono = document.getElementById('telefono').value;
-      const nombre = document.getElementById('nombre').value;
-      const empresa = document.getElementById('empresa').value;
+    // Price per seat (including IVA)
+    const PRICE_PER_SEAT = 2088; // $1,800 + 16% IVA = $2,088
 
-      // Validate phone number (10 digits)
+    // Handle seat selection change
+    document.getElementById('num_seats').addEventListener('change', function() {
+      const numSeats = parseInt(this.value) || 0;
+      const attendeeFields = document.getElementById('attendee-fields');
+      const totalSection = document.getElementById('total-section');
+      const container = document.getElementById('attendee-names-container');
+      const totalAmount = document.getElementById('total-amount');
+
+      if (numSeats > 0) {
+        attendeeFields.style.display = 'block';
+        totalSection.style.display = 'block';
+
+        // Update total amount
+        const total = numSeats * PRICE_PER_SEAT;
+        totalAmount.textContent = '$' + total.toLocaleString('es-MX') + ' MXN';
+
+        // Clear existing fields
+        container.innerHTML = '';
+
+        // Add name fields for each seat
+        for (let i = 1; i <= numSeats; i++) {
+          const fieldGroup = document.createElement('div');
+          fieldGroup.className = 'form-group';
+          fieldGroup.innerHTML = `
+            <label for="attendee_${i}">
+              Asistente ${i} ${i === 1 ? '(Contacto Principal - Se llenará automáticamente)' : ''}
+              <span class="required-field">*</span>
+            </label>
+            <input
+              type="text"
+              name="attendee_names[]"
+              class="form-control attendee-name"
+              id="attendee_${i}"
+              placeholder="Nombre completo del asistente ${i}"
+              ${i === 1 ? 'readonly' : 'required'}
+            >
+          `;
+          container.appendChild(fieldGroup);
+        }
+
+        // Auto-fill first attendee with main contact name
+        const mainName = document.getElementById('nombre').value;
+        if (mainName) {
+          document.getElementById('attendee_1').value = mainName;
+        }
+      } else {
+        attendeeFields.style.display = 'none';
+        totalSection.style.display = 'none';
+        container.innerHTML = '';
+      }
+    });
+
+    // Auto-update first attendee when main name changes
+    document.getElementById('nombre').addEventListener('input', function() {
+      const firstAttendee = document.getElementById('attendee_1');
+      if (firstAttendee) {
+        firstAttendee.value = this.value;
+      }
+    });
+
+    // Handle invoice checkbox
+    document.getElementById('requires_invoice').addEventListener('change', function() {
+      const invoiceFields = document.getElementById('invoice-fields');
+      const invoiceFileInput = document.getElementById('invoice_file');
+
+      if (this.checked) {
+        invoiceFields.style.display = 'block';
+        invoiceFileInput.required = true;
+      } else {
+        invoiceFields.style.display = 'none';
+        invoiceFileInput.required = false;
+        invoiceFileInput.value = ''; // Clear file input
+      }
+    });
+
+    // Form submission
+    document.getElementById('eventRegistrationForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const loadingMsg = document.getElementById('loading-message');
+      const errorMsg = document.getElementById('error-message');
+      const successMsg = document.getElementById('success-message');
+      const submitBtn = document.getElementById('submit-button');
+
+      // Hide all messages
+      loadingMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+      successMsg.style.display = 'none';
+
+      // Validate phone number
+      const telefono = document.getElementById('telefono').value;
       if (!/^\d{10}$/.test(telefono)) {
-        e.preventDefault();
-        alert('Por favor ingrese un número telefónico válido de 10 dígitos');
-        return false;
+        errorMsg.textContent = 'Por favor ingrese un número telefónico válido de 10 dígitos';
+        errorMsg.style.display = 'block';
+        return;
       }
 
-      // Validate required fields
-      if (!nombre.trim() || !empresa.trim()) {
-        e.preventDefault();
-        alert('Por favor complete todos los campos obligatorios');
-        return false;
+      // Collect attendee names
+      const attendeeNames = [];
+      document.querySelectorAll('.attendee-name').forEach(input => {
+        attendeeNames.push(input.value.trim());
+      });
+
+      // Validate all attendee names are filled
+      const emptyNames = attendeeNames.filter(name => !name);
+      if (emptyNames.length > 0) {
+        errorMsg.textContent = 'Por favor proporcione los nombres de todos los asistentes';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append('nombre', document.getElementById('nombre').value.trim());
+      formData.append('empresa', document.getElementById('empresa').value.trim());
+      formData.append('telefono', telefono);
+      formData.append('correo', document.getElementById('correo').value.trim());
+      formData.append('num_seats', parseInt(document.getElementById('num_seats').value));
+      formData.append('evento', document.querySelector('input[name="evento"]').value);
+      formData.append('fecha_registro', document.getElementById('fecha_registro').value);
+
+      // Add attendee names
+      attendeeNames.forEach((name, index) => {
+        formData.append(`attendee_names[${index}]`, name);
+      });
+
+      // Add invoice data if required
+      const requiresInvoice = document.getElementById('requires_invoice').checked;
+      formData.append('requires_invoice', requiresInvoice ? '1' : '0');
+
+      if (requiresInvoice) {
+        const invoiceFile = document.getElementById('invoice_file').files[0];
+        if (invoiceFile) {
+          formData.append('invoice_file', invoiceFile);
+        }
+      }
+
+      // Show loading
+      loadingMsg.style.display = 'flex';
+      submitBtn.disabled = true;
+
+      try {
+        // Send to API
+        const response = await fetch(`${API_URL}/events/register`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+            // Don't set Content-Type - browser will set it with boundary for FormData
+          },
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // Show success message
+          successMsg.style.display = 'block';
+          loadingMsg.style.display = 'none';
+
+          // Store registration code for reference
+          if (data.data && data.data.registration_code) {
+            sessionStorage.setItem('registration_code', data.data.registration_code);
+          }
+
+          // Redirect to Clip checkout
+          if (data.data && data.data.checkout_url) {
+            setTimeout(() => {
+              window.location.href = data.data.checkout_url;
+            }, 1500);
+          } else {
+            errorMsg.textContent = 'No se pudo obtener la URL de pago. Por favor contacte soporte.';
+            errorMsg.style.display = 'block';
+            loadingMsg.style.display = 'none';
+            submitBtn.disabled = false;
+          }
+        } else {
+          // Show error
+          loadingMsg.style.display = 'none';
+
+          if (data.errors) {
+            // Validation errors
+            const errorMessages = [];
+            for (const field in data.errors) {
+              errorMessages.push(data.errors[field].join(', '));
+            }
+            errorMsg.textContent = errorMessages.join('. ');
+          } else {
+            errorMsg.textContent = data.message || 'Ocurrió un error al procesar su registro';
+          }
+
+          errorMsg.style.display = 'block';
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        loadingMsg.style.display = 'none';
+        errorMsg.textContent = 'Error de conexión. Por favor verifique su conexión a internet e intente nuevamente.';
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
       }
     });
   </script>
