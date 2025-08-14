@@ -719,31 +719,122 @@
         // Clear existing fields
         container.innerHTML = '';
 
-        // Add name fields for each seat
+        // Add fields for each attendee
         for (let i = 1; i <= numSeats; i++) {
           const fieldGroup = document.createElement('div');
-          fieldGroup.className = 'form-group';
-          fieldGroup.innerHTML = `
-            <label for="attendee_${i}">
-              Asistente ${i} ${i === 1 ? '(Contacto Principal - Se llenará automáticamente)' : ''}
-              <span class="required-field">*</span>
-            </label>
-            <input
-              type="text"
-              name="attendee_names[]"
-              class="form-control attendee-name"
-              id="attendee_${i}"
-              placeholder="Nombre completo del asistente ${i}"
-              ${i === 1 ? 'readonly' : 'required'}
-            >
-          `;
+          fieldGroup.className = 'attendee-group mb-4 p-3 border rounded';
+          
+          if (i === 1) {
+            // First attendee (main contact) - readonly fields auto-filled
+            fieldGroup.innerHTML = `
+              <h6 class="mb-3">Asistente ${i} (Contacto Principal - Se llenará automáticamente)</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="attendee_name_${i}">Nombre <span class="required-field">*</span></label>
+                    <input
+                      type="text"
+                      name="attendee_names[]"
+                      class="form-control attendee-name"
+                      id="attendee_name_${i}"
+                      placeholder="Nombre completo"
+                      readonly
+                    >
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="attendee_email_${i}">Correo <span class="required-field">*</span></label>
+                    <input
+                      type="email"
+                      name="attendee_emails[]"
+                      class="form-control attendee-email"
+                      id="attendee_email_${i}"
+                      placeholder="correo@ejemplo.com"
+                      readonly
+                    >
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="attendee_phone_${i}">Teléfono <span class="required-field">*</span></label>
+                    <input
+                      type="tel"
+                      name="attendee_phones[]"
+                      class="form-control attendee-phone"
+                      id="attendee_phone_${i}"
+                      placeholder="10 dígitos"
+                      readonly
+                    >
+                  </div>
+                </div>
+              </div>
+            `;
+          } else {
+            // Additional attendees - required fields
+            fieldGroup.innerHTML = `
+              <h6 class="mb-3">Asistente ${i}</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="attendee_name_${i}">Nombre <span class="required-field">*</span></label>
+                    <input
+                      type="text"
+                      name="attendee_names[]"
+                      class="form-control attendee-name"
+                      id="attendee_name_${i}"
+                      placeholder="Nombre completo"
+                      required
+                    >
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="attendee_email_${i}">Correo <span class="required-field">*</span></label>
+                    <input
+                      type="email"
+                      name="attendee_emails[]"
+                      class="form-control attendee-email"
+                      id="attendee_email_${i}"
+                      placeholder="correo@ejemplo.com"
+                      required
+                    >
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="attendee_phone_${i}">Teléfono <span class="required-field">*</span></label>
+                    <input
+                      type="tel"
+                      name="attendee_phones[]"
+                      class="form-control attendee-phone"
+                      id="attendee_phone_${i}"
+                      placeholder="10 dígitos"
+                      pattern="[0-9]{10}"
+                      required
+                    >
+                  </div>
+                </div>
+              </div>
+            `;
+          }
+          
           container.appendChild(fieldGroup);
         }
 
-        // Auto-fill first attendee with main contact name
+        // Auto-fill first attendee with main contact info
         const mainName = document.getElementById('nombre').value;
+        const mainEmail = document.getElementById('correo').value;
+        const mainPhone = document.getElementById('telefono').value;
+        
         if (mainName) {
-          document.getElementById('attendee_1').value = mainName;
+          document.getElementById('attendee_name_1').value = mainName;
+        }
+        if (mainEmail) {
+          document.getElementById('attendee_email_1').value = mainEmail;
+        }
+        if (mainPhone) {
+          document.getElementById('attendee_phone_1').value = mainPhone;
         }
       } else {
         attendeeFields.style.display = 'none';
@@ -752,11 +843,25 @@
       }
     });
 
-    // Auto-update first attendee when main name changes
+    // Auto-update first attendee when main contact info changes
     document.getElementById('nombre').addEventListener('input', function() {
-      const firstAttendee = document.getElementById('attendee_1');
+      const firstAttendee = document.getElementById('attendee_name_1');
       if (firstAttendee) {
         firstAttendee.value = this.value;
+      }
+    });
+    
+    document.getElementById('correo').addEventListener('input', function() {
+      const firstAttendeeEmail = document.getElementById('attendee_email_1');
+      if (firstAttendeeEmail) {
+        firstAttendeeEmail.value = this.value;
+      }
+    });
+    
+    document.getElementById('telefono').addEventListener('input', function() {
+      const firstAttendeePhone = document.getElementById('attendee_phone_1');
+      if (firstAttendeePhone) {
+        firstAttendeePhone.value = this.value;
       }
     });
 
@@ -797,16 +902,42 @@
         return;
       }
 
-      // Collect attendee names
+      // Collect attendee information
       const attendeeNames = [];
+      const attendeeEmails = [];
+      const attendeePhones = [];
+      
       document.querySelectorAll('.attendee-name').forEach(input => {
         attendeeNames.push(input.value.trim());
       });
+      
+      document.querySelectorAll('.attendee-email').forEach(input => {
+        attendeeEmails.push(input.value.trim());
+      });
+      
+      document.querySelectorAll('.attendee-phone').forEach(input => {
+        attendeePhones.push(input.value.trim());
+      });
 
-      // Validate all attendee names are filled
+      // Validate all attendee fields are filled
       const emptyNames = attendeeNames.filter(name => !name);
+      const emptyEmails = attendeeEmails.filter(email => !email);
+      const emptyPhones = attendeePhones.filter(phone => !phone);
+      
       if (emptyNames.length > 0) {
         errorMsg.textContent = 'Por favor proporcione los nombres de todos los asistentes';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      
+      if (emptyEmails.length > 0) {
+        errorMsg.textContent = 'Por favor proporcione el correo de todos los asistentes';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      
+      if (emptyPhones.length > 0) {
+        errorMsg.textContent = 'Por favor proporcione el teléfono de todos los asistentes';
         errorMsg.style.display = 'block';
         return;
       }
@@ -821,9 +952,17 @@
       formData.append('evento', document.querySelector('input[name="evento"]').value);
       formData.append('fecha_registro', document.getElementById('fecha_registro').value);
 
-      // Add attendee names
+      // Add attendee information
       attendeeNames.forEach((name, index) => {
         formData.append(`attendee_names[${index}]`, name);
+      });
+      
+      attendeeEmails.forEach((email, index) => {
+        formData.append(`attendee_emails[${index}]`, email);
+      });
+      
+      attendeePhones.forEach((phone, index) => {
+        formData.append(`attendee_phones[${index}]`, phone);
       });
 
       // Add invoice data if required
