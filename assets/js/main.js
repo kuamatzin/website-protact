@@ -107,6 +107,22 @@
   }
 
   /**
+   * Back to top button - Modern
+   */
+  let backtotopModern = select('.back-to-top-modern')
+  if (backtotopModern) {
+    const toggleBacktotopModern = () => {
+      if (window.scrollY > 100) {
+        backtotopModern.classList.add('active')
+      } else {
+        backtotopModern.classList.remove('active')
+      }
+    }
+    window.addEventListener('load', toggleBacktotopModern)
+    onscroll(document, toggleBacktotopModern)
+  }
+
+  /**
    * Mobile nav toggle
    */
   on('click', '.mobile-nav-toggle', function(e) {
