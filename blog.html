@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Blog - Protact</title>
+    <meta content="Blog de Protact - Noticias y artículos sobre el sector hidrocarburos" name="description" />
+    <meta content="protact, blog, hidrocarburos, gasolineras, normativa, asea, cre" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/favicon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-94XTWHL6DT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-94XTWHL6DT");
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TNKZBSQ9");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+      /* Blog Specific Styles */
+      .blog-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 120px 0 80px 0;
+        color: white;
+        text-align: center;
+      }
+      .blog-hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+      }
+      .blog-hero p {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .blog-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+      }
+
+      .blog-filters {
+        margin-bottom: 50px;
+      }
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 10px 25px;
+        border: 2px solid #e4e4e4;
+        background: white;
+        color: #666;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        border-color: #c9232c;
+        background: #c9232c;
+        color: white;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .blog-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .blog-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .blog-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .blog-card:hover .blog-image {
+        transform: scale(1.05);
+      }
+
+      .blog-content {
+        padding: 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #666;
+      }
+      .blog-meta i {
+        color: #c9232c;
+      }
+
+      .blog-category {
+        display: inline-block;
+        padding: 5px 15px;
+        background: #c9232c;
+        color: white;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .blog-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin-bottom: 15px;
+        line-height: 1.3;
+      }
+
+      .blog-excerpt {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex-grow: 1;
+      }
+
+      .blog-author {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 20px;
+        border-top: 1px solid #f0f0f0;
+      }
+      .author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .author-info {
+        font-size: 14px;
+      }
+      .author-name {
+        font-weight: 600;
+        color: #2c2c2c;
+      }
+      .author-role {
+        color: #666;
+        font-size: 12px;
+      }
+
+      .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #c9232c;
+        font-weight: 600;
+        text-decoration: none;
+        transition: gap 0.3s ease;
+      }
+      .read-more:hover {
+        gap: 12px;
+        color: #fb0825;
+      }
+
+      .newsletter-section {
+        background: linear-gradient(135deg, #c9232c 0%, #fb0825 100%);
+        padding: 80px 0;
+        color: white;
+        text-align: center;
+      }
+      .newsletter-content h3 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      .newsletter-content p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+      .newsletter-form {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .newsletter-input {
+        flex: 1;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        background: white;
+        color: #333;
+        border: 2px solid white;
+      }
+      .newsletter-input::placeholder {
+        color: #999;
+      }
+      .newsletter-input:focus {
+        outline: none;
+        border-color: #f0f0f0;
+      }
+      .newsletter-btn {
+        padding: 15px 35px;
+        background: white;
+        color: #c9232c;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .newsletter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .blog-hero h1 {
+          font-size: 36px;
+        }
+        .blog-grid {
+          grid-template-columns: 1fr;
+        }
+        .newsletter-form {
+          flex-direction: column;
+        }
+        .filter-buttons {
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TNKZBSQ9"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+      <div class="container d-flex align-items-center">
+        <a href="/" class="logo me-auto"
+          ><img src="assets/img/white_logo.png" alt="" class="img-fluid"
+        /></a>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link" href="/">Inicio</a></li>
+            <li><a class="nav-link" href="/#about">Acerca de nosotros</a></li>
+            <li><a class="nav-link" href="/#services">Servicios</a></li>
+            <li><a class="nav-link active" href="/blog.html">Blog</a></li>
+            <li><a class="nav-link" href="/#contact">Contacto</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <main id="main">
+      <!-- ======= Blog Hero Section ======= -->
+      <section class="blog-hero">
+        <div class="container">
+          <h1 data-aos="fade-up">Blog Protact</h1>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Expertos en el sector hidrocarburos compartiendo conocimiento,
+            normativas y las últimas tendencias de la industria.
+          </p>
+        </div>
+      </section>
+      <!-- End Blog Hero -->
+
+      <!-- ======= Blog Content Section ======= -->
+      <section class="blog-section">
+        <div class="container">
+          <!-- Blog Filters -->
+          <div class="blog-filters" data-aos="fade-up">
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">Todos</button>
+              <button class="filter-btn" data-filter="asea">ASEA</button>
+              <button class="filter-btn" data-filter="cre">CRE</button>
+              <button class="filter-btn" data-filter="normativa">Normativa</button>
+              <button class="filter-btn" data-filter="seguridad">Seguridad</button>
+              <button class="filter-btn" data-filter="tendencias">Tendencias</button>
+            </div>
+          </div>
+
+          <!-- Blog Grid -->
+          <div class="blog-grid" id="blogGrid">
+            <!-- Blog Post: Nueva Regulación Gas LP -->
+            <article class="blog-card" data-category="normativa asea" data-aos="fade-up" data-aos-delay="100">
+              <img src="https://a-us.storyblok.com/f/1005140/384x242/2a5a615023/7d-outline-most-popular-tank-trailer-trucks-for-fuel-supplies_html_641408be7fc77380.jpg/m/1120x480/filters:format(webp)" alt="Transporte Gas LP" class="blog-image">
+              <div class="blog-content">
+                <span class="blog-category">NORMATIVA</span>
+                <div class="blog-meta">
+                  <span><i class="bi bi-calendar3"></i> 2 de Octubre, 2025</span>
+                  <span><i class="bi bi-clock"></i> 6 min lectura</span>
+                </div>
+                <h3 class="blog-title">Nueva regulación de seguridad para el transporte y distribución de gas LP</h3>
+                <p class="blog-excerpt">
+                  La ASEA ha emitido dos nuevas Normas de Emergencia (NOM-EM-006 y NOM-EM-007-ASEA-2025)
+                  que transformarán las operaciones de transporte y distribución de Gas LP en México.
+                  Conoce los cambios más importantes y los plazos de implementación.
+                </p>
+                <div class="blog-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Equipo Protact" class="author-avatar">
+                  <div class="author-info">
+                    <div class="author-name">Equipo Protact</div>
+                    <div class="author-role">Expertos en Regulación</div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-3">
+                <a href="/blog-post-nueva-regulacion-gas-lp.html" class="read-more">
+                  Leer más <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- End Blog Content Section -->
+
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer-modern">
+      <div class="footer-main">
+        <div class="container">
+          <div class="row">
+            <!-- Company Info -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="footer-brand">
+                <img src="assets/img/white_logo.png" alt="PROTACT" class="footer-logo">
+                <p class="brand-description">
+                  Tu aliado estratégico en el cumplimiento normativo del sector hidrocarburos.
+                  Brindamos soluciones integrales con el respaldo de expertos certificados.
+                </p>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="footer-links">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/">Inicio</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#about">Nosotros</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#services">Servicios</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/blog.html">Blog</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#contact">Contacto</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Services -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="footer-links">
+                <h4>Nuestros Servicios</h4>
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#services">Servicios ASEA</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#services">Servicios CRE</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#services">SASISOPA</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#services">Auditorías</a></li>
+                  <li><i class="bi bi-chevron-right"></i> <a href="/#services">Capacitación</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Contact & Newsletter -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+              <div class="footer-contact">
+                <h4>Contacto</h4>
+                <div class="contact-info">
+                  <div class="info-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <p>Sta Cruz Buenavista<br>72150 Puebla, Pue.</p>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-telephone"></i>
+                    <p>+52 222 164 2784</p>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-envelope"></i>
+                    <p>contacto@protact.mx</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links Bar -->
+          <div class="footer-social-bar">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <h5 class="social-title">Síguenos en nuestras redes</h5>
+              </div>
+              <div class="col-md-6">
+                <div class="social-links">
+                  <a href="https://www.facebook.com/Protactmexico" target="_blank" class="facebook">
+                    <i class="bi bi-facebook"></i>
+                  </a>
+                  <a href="https://instagram.com/protact.mexico?igshid=YmMyMTA2M2Y=" target="_blank" class="instagram">
+                    <i class="bi bi-instagram"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/company/protact/" target="_blank" class="linkedin">
+                    <i class="bi bi-linkedin"></i>
+                  </a>
+                  <a href="https://wa.me/5212221642784" target="_blank" class="whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                  </a>
+                  <a href="mailto:contacto@protact.mx" class="email">
+                    <i class="bi bi-envelope"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="copyright">
+                &copy; 2024 <strong>PROTACT</strong>. Todos los derechos reservados.
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="footer-menu">
+                <a href="#">Aviso de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+                <a href="/coa.html">COA</a>
+                <a href="/anexo-30-31.html">Anexo 30-31</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top-modern d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Blog Filter Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filterValue = this.getAttribute('data-filter');
+
+            blogCards.forEach(card => {
+              if (filterValue === 'all') {
+                card.style.display = 'flex';
+              } else {
+                const categories = card.getAttribute('data-category').split(' ');
+                if (categories.includes(filterValue)) {
+                  card.style.display = 'flex';
+                } else {
+                  card.style.display = 'none';
+                }
+              }
+            });
+          });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+          newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+
+            // Here you would typically send the email to your backend
+            // For now, we'll show a success message
+            const button = this.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = '¡Suscrito!';
+            button.style.background = '#28a745';
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.background = 'white';
+              this.reset();
+            }, 3000);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
