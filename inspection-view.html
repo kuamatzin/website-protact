@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Detalles de Inspección - Protact</title>
+    <meta content="Detalles de la lista de inspección" name="description" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/favicon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <style>
+      body {
+        background: #f8f9fa;
+      }
+
+      .inspection-view-container {
+        min-height: 100vh;
+        padding: 120px 0 60px;
+      }
+
+      .breadcrumb-custom {
+        background: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .breadcrumb-custom a {
+        color: #c9232c;
+        text-decoration: none;
+        transition: opacity 0.3s;
+      }
+
+      .breadcrumb-custom a:hover {
+        opacity: 0.7;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, #c9232c 0%, #fb0825 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 40px rgba(201, 35, 44, 0.3);
+      }
+
+      .hero-section h1 {
+        margin: 0 0 15px 0;
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      .hero-section .inspection-meta {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .hero-section .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .hero-section .meta-item i {
+        font-size: 18px;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .status-pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+
+      .status-in_progress {
+        background: #d1ecf1;
+        color: #0c5460;
+      }
+
+      .status-completed {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      /* Progress Section */
+      .progress-section {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .progress-section h3 {
+        color: #2c2c2c;
+        margin-bottom: 20px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .progress-section h3 i {
+        color: #c9232c;
+      }
+
+      .progress-display {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .progress-percentage-text {
+        font-size: 32px;
+        font-weight: 700;
+        color: #c9232c;
+      }
+
+      .progress-status-badge {
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .progress-status-secondary {
+        background: #6c757d;
+        color: white;
+      }
+
+      .progress-status-danger {
+        background: #dc3545;
+        color: white;
+      }
+
+      .progress-status-warning {
+        background: #ffc107;
+        color: #856404;
+      }
+
+      .progress-status-info {
+        background: #17a2b8;
+        color: white;
+      }
+
+      .progress-status-success {
+        background: #28a745;
+        color: white;
+      }
+
+      .progress-bar-container {
+        height: 40px;
+        background: #e9ecef;
+        border-radius: 50px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 16px;
+        transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+        font-size: 15px;
+        font-weight: 700;
+        color: white;
+        overflow: visible;
+        animation: progressLoadLarge 2s ease-out;
+      }
+
+      @keyframes progressLoadLarge {
+        from {
+          width: 0 !important;
+          opacity: 0.3;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .progress-bar-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        border-radius: 50px 50px 0 0;
+      }
+
+      .progress-bar-fill-secondary {
+        background: linear-gradient(90deg, #868e96 0%, #6c757d 50%, #495057 100%);
+      }
+
+      .progress-bar-fill-danger {
+        background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 50%, #c92a2a 100%);
+      }
+
+      .progress-bar-fill-warning {
+        background: linear-gradient(90deg, #ffd93d 0%, #ffb700 50%, #f59f00 100%);
+      }
+
+      .progress-bar-fill-info {
+        background: linear-gradient(90deg, #4dabf7 0%, #339af0 50%, #1c7ed6 100%);
+      }
+
+      .progress-bar-fill-success {
+        background: linear-gradient(90deg, #51cf66 0%, #37b24d 50%, #2b8a3e 100%);
+      }
+
+      .info-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .info-card h3 {
+        color: #2c2c2c;
+        margin-bottom: 20px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-card h3 i {
+        color: #c9232c;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+
+      .data-section {
+        margin-bottom: 32px;
+      }
+
+      .section-heading {
+        color: #2c2c2c;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-heading i {
+        color: #c9232c;
+        font-size: 18px;
+      }
+
+      .section-content {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .info-item {
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .info-item:hover {
+        border-color: #c9232c;
+        box-shadow: 0 2px 8px rgba(201, 35, 44, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .info-item label {
+        display: block;
+        font-weight: 700;
+        color: #c9232c;
+        font-size: 11px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .info-item .value {
+        color: #212529;
+        font-size: 15px;
+        font-weight: 500;
+        word-break: break-word;
+      }
+
+      .value-empty {
+        color: #adb5bd;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .value-error {
+        color: #dc3545;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .tabs-container {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-tabs {
+        border-bottom: 2px solid #f0f0f0;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .nav-tabs::-webkit-scrollbar-thumb {
+        background: #c9232c;
+        border-radius: 2px;
+      }
+
+      .nav-tabs .nav-item {
+        white-space: nowrap;
+      }
+
+      .nav-tabs .nav-link {
+        color: #666;
+        border: none;
+        border-bottom: 3px solid transparent;
+        padding: 12px 20px;
+        font-weight: 500;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .nav-tabs .nav-link i {
+        font-size: 16px;
+        opacity: 0.7;
+      }
+
+      .nav-tabs .nav-link:hover {
+        color: #c9232c;
+        border-color: transparent;
+        background: rgba(201, 35, 44, 0.05);
+      }
+
+      .nav-tabs .nav-link.active {
+        color: #c9232c;
+        border-bottom: 3px solid #c9232c;
+        background: transparent;
+      }
+
+      .nav-tabs .nav-link.active i {
+        opacity: 1;
+      }
+
+      .tab-content {
+        min-height: 300px;
+      }
+
+      .section-title {
+        color: #2c2c2c;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .repeater-item {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-left: 4px solid #c9232c;
+        padding: 24px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .repeater-item:hover {
+        box-shadow: 0 4px 12px rgba(201, 35, 44, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .repeater-item h5 {
+        color: #c9232c;
+        font-size: 16px;
+        margin-bottom: 18px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .repeater-item h5 i {
+        font-size: 18px;
+      }
+
+      .download-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        margin-bottom: 35px;
+        flex-wrap: wrap;
+      }
+
+      .btn-download {
+        background: linear-gradient(135deg, #c9232c 0%, #fb0825 100%);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-download:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(201, 35, 44, 0.3);
+        color: white;
+      }
+
+      .loading-spinner {
+        text-align: center;
+        padding: 60px;
+      }
+
+      .spinner-border {
+        color: #c9232c;
+      }
+
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 22px;
+        }
+
+        .hero-section .inspection-meta {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-tabs .nav-link {
+          font-size: 13px;
+          padding: 10px 16px;
+        }
+
+        .nav-tabs .nav-link i {
+          font-size: 14px;
+        }
+
+        .section-content {
+          padding: 16px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .info-grid {
+          gap: 16px;
+        }
+
+        .info-item {
+          padding: 12px;
+        }
+
+        .download-buttons {
+          flex-direction: column;
+        }
+
+        .btn-download {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <a href="/" class="logo me-auto">
+          <img src="assets/img/white_logo.png" alt="" class="img-fluid" />
+        </a>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <main class="inspection-view-container">
+      <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-custom" aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="#" onclick="goToDashboard(); return false;">
+                <i class="bi bi-house"></i> Panel Principal
+              </a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" onclick="goToStationInspections(); return false;">
+                <span id="stationNameBreadcrumb">Estación</span>
+              </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Lista de Inspección
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-spinner">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p class="mt-3">Cargando lista de inspección...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" style="display: none">
+          <div class="error-message">
+            <h4><i class="bi bi-exclamation-triangle"></i> Error</h4>
+            <p id="errorMessage"></p>
+            <button class="btn btn-danger mt-2" onclick="location.reload()">
+              <i class="bi bi-arrow-clockwise"></i> Reintentar
+            </button>
+          </div>
+        </div>
+
+        <!-- Inspection Content -->
+        <div id="inspectionContent" style="display: none">
+          <!-- Hero Section -->
+          <div class="hero-section" data-aos="fade-down">
+            <h1>
+              <i class="bi bi-file-earmark-text"></i>
+              Lista de Inspección
+            </h1>
+            <div class="inspection-meta">
+              <div class="meta-item">
+                <i class="bi bi-calendar3"></i>
+                <span id="inspectionDate"></span>
+              </div>
+              <div class="meta-item">
+                <i class="bi bi-clock"></i>
+                <span id="inspectionTime"></span>
+              </div>
+              <span id="statusBadge" class="status-badge"></span>
+            </div>
+          </div>
+
+          <!-- Progress Section -->
+          <div class="progress-section" data-aos="fade-up">
+            <h3><i class="bi bi-clipboard-check"></i> Progreso de Llenado</h3>
+            <div class="progress-display">
+              <div>
+                <div style="font-size: 13px; color: #666; margin-bottom: 5px">Completado</div>
+                <div class="progress-percentage-text" id="progressPercentage">0%</div>
+              </div>
+              <div class="progress-status-badge" id="progressStatusBadge">Cargando...</div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="progressBarFill" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Station Info Card -->
+          <div class="info-card" data-aos="fade-up">
+            <h3><i class="bi bi-building"></i> Información de la Estación</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <label>Nombre</label>
+                <div class="value" id="stationName"></div>
+              </div>
+              <div class="info-item">
+                <label>Dirección</label>
+                <div class="value" id="stationAddress"></div>
+              </div>
+              <div class="info-item">
+                <label>Ciudad/Estado</label>
+                <div class="value" id="stationLocation"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inspection Details Card -->
+          <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+            <h3><i class="bi bi-clipboard-check"></i> Detalles de la Inspección</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <label>Persona a Cargo</label>
+                <div class="value" id="personInCharge"></div>
+              </div>
+              <div class="info-item">
+                <label>Fecha de Inicio</label>
+                <div class="value" id="startDateTime"></div>
+              </div>
+              <div class="info-item">
+                <label>Fecha de Fin</label>
+                <div class="value" id="endDateTime"></div>
+              </div>
+              <div class="info-item">
+                <label>Inspectores</label>
+                <div class="value" id="inspectorsList"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download Buttons -->
+          <div class="download-buttons" data-aos="fade-up" data-aos-delay="150">
+            <button class="btn-download" onclick="downloadPDF()">
+              <i class="bi bi-file-earmark-pdf"></i>
+              Descargar PDF
+            </button>
+            <button class="btn-download" onclick="downloadWord()">
+              <i class="bi bi-file-earmark-word"></i>
+              Descargar Word
+            </button>
+          </div>
+
+          <!-- Tabbed Content -->
+          <div class="tabs-container" data-aos="fade-up" data-aos-delay="200">
+            <ul class="nav nav-tabs" id="inspectionTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="general-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#general"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-info-circle"></i>
+                  Información General
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="equipment-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#equipment"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-wrench"></i>
+                  Equipos Volumétricos
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="level-probes-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#level-probes"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-rulers"></i>
+                  Sondas de Nivel
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="temp-probes-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#temp-probes"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-thermometer-half"></i>
+                  Sondas de Temperatura
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="tanks-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#tanks"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-droplet"></i>
+                  Tanques
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="service-stations-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#service-stations"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-fuel-pump"></i>
+                  Estaciones de Servicio
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="measurement-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#measurement"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-speedometer2"></i>
+                  Sistema de Medición
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="computer-systems-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#computer-systems"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-laptop"></i>
+                  Sistemas Informáticos
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="security-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#security"
+                  type="button"
+                  role="tab"
+                >
+                  <i class="bi bi-shield-check"></i>
+                  Seguridad
+                </button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="inspectionTabsContent">
+              <!-- Tab 1: Información General -->
+              <div class="tab-pane fade show active" id="general" role="tabpanel">
+                <div class="info-grid" id="generalInfo"></div>
+              </div>
+
+              <!-- Tab 2: Equipos Volumétricos -->
+              <div class="tab-pane fade" id="equipment" role="tabpanel">
+                <div class="info-grid" id="equipmentInfo"></div>
+              </div>
+
+              <!-- Tab 3: Sondas de Nivel -->
+              <div class="tab-pane fade" id="level-probes" role="tabpanel">
+                <div id="levelProbesInfo"></div>
+              </div>
+
+              <!-- Tab 4: Sondas de Temperatura -->
+              <div class="tab-pane fade" id="temp-probes" role="tabpanel">
+                <div id="tempProbesInfo"></div>
+              </div>
+
+              <!-- Tab 5: Tanques -->
+              <div class="tab-pane fade" id="tanks" role="tabpanel">
+                <div id="tanksInfo"></div>
+              </div>
+
+              <!-- Tab 6: Estaciones de Servicio -->
+              <div class="tab-pane fade" id="service-stations" role="tabpanel">
+                <div id="serviceStationsInfo"></div>
+              </div>
+
+              <!-- Tab 7: Sistema de Medición -->
+              <div class="tab-pane fade" id="measurement" role="tabpanel">
+                <div class="info-grid" id="measurementInfo"></div>
+              </div>
+
+              <!-- Tab 8: Sistemas Informáticos -->
+              <div class="tab-pane fade" id="computer-systems" role="tabpanel">
+                <div class="info-grid" id="computerSystemsInfo"></div>
+              </div>
+
+              <!-- Tab 9: Seguridad -->
+              <div class="tab-pane fade" id="security" role="tabpanel">
+                <div class="info-grid" id="securityInfo"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- API Configuration -->
+    <script src="api-config.js"></script>
+
+    <!-- Inspection View Script -->
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+      });
+
+      // API Configuration - auto-detect or use environment variable
+      const API_BASE_URL = window.PROTACT_API_URL || 'http://localhost:8000/api/public';
+
+      // Get parameters from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const clientToken = urlParams.get('token');
+      const inspectionListId = urlParams.get('inspection');
+
+      // Store for navigation
+      let stationId = null;
+
+      if (!clientToken || !inspectionListId) {
+        showError('Parámetros de acceso inválidos.');
+      } else {
+        sessionStorage.setItem('clientToken', clientToken);
+        loadInspectionList();
+      }
+
+      async function loadInspectionList() {
+        try {
+          const response = await fetch(
+            `${API_BASE_URL}/inspection-lists/${inspectionListId}?client_token=${clientToken}`
+          );
+          const data = await response.json();
+
+          if (!data.success) {
+            throw new Error(data.error.message || 'Error al cargar la lista de inspección');
+          }
+
+          renderInspectionList(data.data.inspection_list);
+        } catch (error) {
+          console.error('Error:', error);
+          showError(error.message || 'Error al conectar con el servidor');
+        }
+      }
+
+      function renderInspectionList(inspectionList) {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('inspectionContent').style.display = 'block';
+
+        const inspection = inspectionList.inspection;
+        const station = inspectionList.station;
+
+        // Store station ID for navigation
+        stationId = station.id;
+
+        // Hero section
+        const inspectionDate = new Date(inspection.inspection_start_datetime);
+        document.getElementById('inspectionDate').textContent = inspectionDate.toLocaleDateString(
+          'es-MX',
+          {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          }
+        );
+        document.getElementById('inspectionTime').textContent = inspectionDate.toLocaleTimeString(
+          'es-MX',
+          {
+            hour: '2-digit',
+            minute: '2-digit',
+          }
+        );
+
+        const statusBadge = document.getElementById('statusBadge');
+        statusBadge.textContent = inspection.status_label;
+        statusBadge.className = `status-badge status-${inspection.status}`;
+
+        // Progress section
+        if (inspectionList.progress) {
+          const percentage = inspectionList.progress.percentage || 0;
+          const status = inspectionList.progress.status || {};
+
+          document.getElementById('progressPercentage').textContent = `${percentage}%`;
+          document.getElementById('progressStatusBadge').textContent = status.text || '';
+          document.getElementById('progressStatusBadge').className =
+            `progress-status-badge progress-status-${status.color}`;
+          document.getElementById('progressBarFill').style.width = `${percentage}%`;
+          document.getElementById('progressBarFill').className =
+            `progress-bar-fill progress-bar-fill-${status.color}`;
+        }
+
+        // Station info
+        document.getElementById('stationName').textContent = station.name || station.internal_name;
+        document.getElementById('stationNameBreadcrumb').textContent =
+          station.name || station.internal_name;
+        document.getElementById(
+          'stationAddress'
+        ).textContent = `${station.address}, ${station.suburb}`;
+        document.getElementById(
+          'stationLocation'
+        ).textContent = `${station.city}, ${station.state}`;
+
+        // Inspection details
+        document.getElementById('personInCharge').textContent = inspection.person_in_charge;
+        document.getElementById('startDateTime').textContent = new Date(
+          inspection.inspection_start_datetime
+        ).toLocaleString('es-MX');
+        document.getElementById('endDateTime').textContent = new Date(
+          inspection.inspection_end_datetime
+        ).toLocaleString('es-MX');
+
+        // Inspectors
+        const inspectorsList = inspection.inspectors
+          .map((inspector) => `${inspector.name} ${inspector.lastname}`)
+          .join(', ');
+        document.getElementById('inspectorsList').textContent =
+          inspectorsList || 'No especificado';
+
+        // Render tabs content
+        renderGeneralInfo(inspectionList.equipment_volume);
+        renderEquipmentInfo(inspectionList.equipment_volume);
+        renderLevelProbes(inspectionList.requirements_measurement_system?.sondas_nivel || []);
+        renderTempProbes(inspectionList.requirements_measurement_system?.sondas_temperatura || []);
+        renderTanks(inspectionList.requirements_measurement_system?.tanques || []);
+        renderServiceStations(inspectionList.service_stations);
+        renderMeasurementSystem(inspectionList.requirements_measurement_system);
+        renderComputerSystems(inspectionList.requirements_computer_systems);
+        renderSecurity(inspectionList.security_requirements);
+      }
+
+      function renderGeneralInfo(equipmentVolume) {
+        const container = document.getElementById('generalInfo');
+        container.innerHTML = `
+          ${createInfoItem('Número de servicio', equipmentVolume?.no_de_servicio)}
+          ${createInfoItem('Administrador', equipmentVolume?.administrador)}
+          ${createInfoItem('Testigo 1', equipmentVolume?.testigo_1)}
+          ${createInfoItem('Testigo 2', equipmentVolume?.testigo_2)}
+        `;
+      }
+
+      function renderEquipmentInfo(equipmentVolume) {
+        const container = document.getElementById('equipmentInfo');
+        container.innerHTML = `
+          ${createInfoItem('Número de dispensarios', equipmentVolume?.no_de_dispensarios)}
+          ${createInfoItem('Número de serie dispensarios', equipmentVolume?.no_de_serie_dispensarios)}
+          ${createInfoItem('Número de sondas', equipmentVolume?.no_de_sondas)}
+          ${createInfoItem('Número de serie sondas', equipmentVolume?.no_serie_sondas)}
+          ${createInfoItem('Número de tanques', equipmentVolume?.no_de_tanques)}
+        `;
+      }
+
+      function renderLevelProbes(sondasNivel) {
+        const container = document.getElementById('levelProbesInfo');
+        if (!sondasNivel || sondasNivel.length === 0) {
+          container.innerHTML = '<p class="text-muted">No hay sondas de nivel registradas</p>';
+          return;
+        }
+
+        container.innerHTML = sondasNivel
+          .map(
+            (sonda, index) => `
+          <div class="repeater-item">
+            <h5><i class="bi bi-rulers"></i> Sonda de Nivel #${index + 1} - ${sonda.producto || 'N/A'}</h5>
+            <div class="info-grid">
+              ${createInfoItem('Producto', sonda.producto)}
+              ${createInfoItem('Nombre documento calibración', sonda.nombre_documento_calibracion)}
+              ${createInfoItem('Fecha calibración', formatDate(sonda.fecha_calibracion))}
+              ${createInfoItem('Folio calibración', sonda.folio_calibracion)}
+              ${createInfoItem('Laboratorio calibración', sonda.laboratorio_calibracion)}
+              ${createInfoItem('Número acreditación laboratorio', sonda.numero_acreditacion_laboratorio)}
+            </div>
+          </div>
+        `
+          )
+          .join('');
+      }
+
+      function renderTempProbes(sondasTemp) {
+        const container = document.getElementById('tempProbesInfo');
+        if (!sondasTemp || sondasTemp.length === 0) {
+          container.innerHTML = '<p class="text-muted">No hay sondas de temperatura registradas</p>';
+          return;
+        }
+
+        container.innerHTML = sondasTemp
+          .map(
+            (sonda, index) => `
+          <div class="repeater-item">
+            <h5><i class="bi bi-thermometer-half"></i> Sonda de Temperatura #${index + 1} - ${sonda.producto || 'N/A'}</h5>
+            <div class="info-grid">
+              ${createInfoItem('Producto', sonda.producto)}
+              ${createInfoItem('Nombre documento calibración', sonda.nombre_documento_calibracion)}
+              ${createInfoItem('Fecha calibración', formatDate(sonda.fecha_calibracion))}
+              ${createInfoItem('Folio calibración', sonda.folio_calibracion)}
+              ${createInfoItem('Laboratorio calibración', sonda.laboratorio_calibracion)}
+              ${createInfoItem('Número acreditación laboratorio', sonda.numero_acreditacion_laboratorio)}
+            </div>
+          </div>
+        `
+          )
+          .join('');
+      }
+
+      function renderTanks(tanques) {
+        const container = document.getElementById('tanksInfo');
+        if (!tanques || tanques.length === 0) {
+          container.innerHTML = '<p class="text-muted">No hay tanques registrados</p>';
+          return;
+        }
+
+        container.innerHTML = tanques
+          .map(
+            (tanque, index) => `
+          <div class="repeater-item">
+            <h5><i class="bi bi-droplet"></i> Tanque #${index + 1} - ${tanque.producto || 'N/A'}</h5>
+            <div class="info-grid">
+              ${createInfoItem('Producto', tanque.producto)}
+              ${createInfoItem('Fecha calibración tanque', formatDate(tanque.fecha_calibracion))}
+              ${createInfoItem('Folio calibración tanque', tanque.folio_calibracion)}
+              ${createInfoItem('Laboratorio calibración tanque', tanque.laboratorio_calibracion)}
+              ${createInfoItem('Número acreditación laboratorio tanque', tanque.numero_acreditacion_laboratorio)}
+            </div>
+          </div>
+        `
+          )
+          .join('');
+      }
+
+      function renderServiceStations(serviceStations) {
+        const container = document.getElementById('serviceStationsInfo');
+        container.innerHTML = `
+          <div class="data-section">
+            <h5 class="section-heading">
+              <i class="bi bi-laptop"></i>
+              Información de Consola
+            </h5>
+            <div class="section-content">
+              <div class="info-grid">
+                ${createInfoItem('Número de serie consola', serviceStations?.no_serie_consola)}
+                ${createInfoItem('Modelo consola', serviceStations?.modelo_consola)}
+                ${createInfoItem('Marca consola', serviceStations?.marca_consola)}
+              </div>
+            </div>
+          </div>
+
+          <div class="data-section">
+            <h5 class="section-heading">
+              <i class="bi bi-file-earmark-text"></i>
+              Planos
+            </h5>
+            <div class="section-content">
+              <div class="info-grid">
+                ${createInfoItem('Plano eléctrico', serviceStations?.nombre_plano_electrico)}
+                ${createInfoItem('Fecha plano eléctrico', formatDate(serviceStations?.fecha_plano_electrico))}
+                ${createInfoItem('Plano mecánico', serviceStations?.nombre_plano_mecanico)}
+                ${createInfoItem('Fecha plano mecánico', formatDate(serviceStations?.fecha_plano_mecanico))}
+                ${createInfoItem('Plano conjunto', serviceStations?.nombre_plano_conjunto)}
+                ${createInfoItem('Fecha plano conjunto', formatDate(serviceStations?.fecha_plano_conjunto))}
+              </div>
+            </div>
+          </div>
+
+          <div class="data-section">
+            <h5 class="section-heading">
+              <i class="bi bi-clipboard-data"></i>
+              Documentación
+            </h5>
+            <div class="section-content">
+              <div class="info-grid">
+                ${createInfoItem('Ticket inventario', serviceStations?.nombre_ticket_inventario)}
+                ${createInfoItem('Ficha técnica sondas', serviceStations?.titulo_ficha_tecnica_sondas)}
+              </div>
+            </div>
+          </div>
+
+          <div class="data-section">
+            <h5 class="section-heading">
+              <i class="bi bi-patch-check"></i>
+              Dictámenes NOM05 SCFI
+            </h5>
+            <div class="section-content">
+              <div class="info-grid">
+                ${createInfoItem('Folio 1er semestre', serviceStations?.folio_dictamen_nom05_scfi_primer_semestre)}
+                ${createInfoItem('Fecha 1er semestre', formatDate(serviceStations?.fecha_dictamen_nom05_scfi_primer_semestre))}
+                ${createInfoItem('Folio 2do semestre', serviceStations?.folio_dictamen_nom05_scfi_segundo_semestre)}
+                ${createInfoItem('Fecha 2do semestre', formatDate(serviceStations?.fecha_dictamen_nom05_scfi_segundo_semestre))}
+              </div>
+            </div>
+          </div>
+
+          <div class="data-section">
+            <h5 class="section-heading">
+              <i class="bi bi-fuel-pump"></i>
+              Dispensarios y Permisos
+            </h5>
+            <div class="section-content">
+              <div class="info-grid">
+                ${createInfoItem('Permiso CRE', serviceStations?.permiso_CRE)}
+                ${createInfoItem('DGN', serviceStations?.DGN)}
+                ${createInfoItem('Fecha DGN', formatDate(serviceStations?.fecha_DGN))}
+                ${createInfoItem('Marca dispensario', serviceStations?.marca_dispensario)}
+                ${createInfoItem('Modelo dispensario', serviceStations?.modelo_dispensario)}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderMeasurementSystem(measurementSystem) {
+        const container = document.getElementById('measurementInfo');
+        container.innerHTML = `
+          ${createInfoItem('Clave manual SGM', measurementSystem?.clave_manual_SGM)}
+          ${createInfoItem('Fecha de emisión SGM', formatDate(measurementSystem?.fecha_de_emision_SGM))}
+          ${createInfoItem('Número de procedimientos SGM', measurementSystem?.no_de_procedimientos_SGM)}
+          ${createInfoItem('Claves de procedimientos SGM', measurementSystem?.claves_de_procedimientos_SGM)}
+          ${createInfoItem('Título ficha técnica dispensarios', measurementSystem?.titulo_ficha_tecnica_dispensarios)}
+          ${createInfoItem('Título ficha técnica consola', measurementSystem?.titulo_ficha_tecnica_consola)}
+          ${createInfoItem('Justificación SGM', measurementSystem?.justificacion_SGM)}
+          ${createInfoItem('Número de serie interfaz', measurementSystem?.no_de_serie_interfaz)}
+          ${createInfoItem('Marca interfaz', measurementSystem?.marca_interfaz)}
+          ${createInfoItem('Nombre UV 005', measurementSystem?.nombre_uv_005)}
+          ${createInfoItem('Fecha dictamen 005', formatDate(measurementSystem?.fecha_dictamen_005))}
+          ${createInfoItem('Folio dictamen 005', measurementSystem?.folio_dictamen_005)}
+          ${createInfoItem('Tipo de comunicación', measurementSystem?.tipo_de_comunicacion)}
+          ${createInfoItem('Número de medidores', measurementSystem?.no_de_medidores)}
+          ${createInfoItem('Número de serie medidores', measurementSystem?.no_serie_medidores)}
+          ${createInfoItem('Nombre UV 016', measurementSystem?.nombre_uv_016)}
+          ${createInfoItem('Fecha 016', formatDate(measurementSystem?.fecha_016))}
+          ${createInfoItem('Folio 016', measurementSystem?.folio_016)}
+        `;
+      }
+
+      function renderComputerSystems(computerSystems) {
+        const container = document.getElementById('computerSystemsInfo');
+        container.innerHTML = `
+          ${createInfoItem('Proveedor programa informático', computerSystems?.security_requirements?.proveedor_programa_informatico)}
+          ${createInfoItem('Versión programa informático', computerSystems?.security_requirements?.version_software)}
+          ${createInfoItem('Medio de respaldo', computerSystems?.medio_de_respaldo)}
+        `;
+      }
+
+      function renderSecurity(securityRequirements) {
+        const container = document.getElementById('securityInfo');
+        container.innerHTML = `
+          ${createInfoItem('Nombre manual', securityRequirements?.nombre_manual)}
+          ${createInfoItem('Marca antivirus', securityRequirements?.marca_antivirus)}
+          ${createInfoItem('Marca firewall', securityRequirements?.marca_firewall)}
+          ${createInfoItem('Nombre acuerdo de confidencialidad', securityRequirements?.nombre_acuerdo_confidencialidad)}
+        `;
+      }
+
+      function createInfoItem(label, value) {
+        let displayValue;
+        let valueClass = 'value';
+
+        if (!value || value === 'null' || value === 'undefined') {
+          displayValue = 'Sin información';
+          valueClass = 'value value-empty';
+        } else {
+          displayValue = value;
+        }
+
+        return `
+          <div class="info-item">
+            <label>${label}</label>
+            <div class="${valueClass}">${displayValue}</div>
+          </div>
+        `;
+      }
+
+      function formatDate(dateString) {
+        if (!dateString) {
+          return '<span class="value-empty">Sin información</span>';
+        }
+
+        try {
+          const date = new Date(dateString);
+
+          // Check if date is valid
+          if (isNaN(date.getTime())) {
+            return '<span class="value-error">Fecha inválida</span>';
+          }
+
+          return date.toLocaleDateString('es-MX', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          });
+        } catch (e) {
+          return '<span class="value-error">Error en formato</span>';
+        }
+      }
+
+      function downloadPDF() {
+        window.open(
+          `http://localhost:8000/api/inspection-lists/${inspectionListId}/generate-document?format=pdf`,
+          '_blank'
+        );
+      }
+
+      function downloadWord() {
+        window.open(
+          `http://localhost:8000/api/inspection-lists/${inspectionListId}/generate-document?format=docx`,
+          '_blank'
+        );
+      }
+
+      function goToDashboard() {
+        window.location.href = `client-dashboard.html?token=${clientToken}`;
+      }
+
+      function goToStationInspections() {
+        if (stationId) {
+          window.location.href = `station-inspections.html?token=${clientToken}&station=${stationId}`;
+        } else {
+          goToDashboard();
+        }
+      }
+
+      function showError(message) {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('errorState').style.display = 'block';
+        document.getElementById('errorMessage').textContent = message;
+      }
+    </script>
+  </body>
+</html>
