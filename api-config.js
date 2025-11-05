@@ -11,6 +11,9 @@
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
     // Local access
     apiUrl = 'http://localhost:8000/api/public';
+  } else if (hostname.includes('netlify.app') || hostname.includes('protact.mx')) {
+    // Production deployment (Netlify or custom domain)
+    apiUrl = 'https://myapp.protact.mx/api/public';
   } else {
     // Remote access - use the same hostname that the page is accessed from
     // This works for Tailscale, LAN IP, or any remote connection
