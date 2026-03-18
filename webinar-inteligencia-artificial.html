@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Webinar IA — Protact | 8 y 9 de Abril 2026</title>
+  <meta content="Cómo las empresas líderes del sector hidrocarburos están usando Inteligencia Artificial para crecer. Regístrate al webinar de Protact." name="description">
+  <meta content="webinar, inteligencia artificial, IA, hidrocarburos, gasolineras, protact, ASEA, CRE" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Template + Glass CSS -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/glass.css" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-94XTWHL6DT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-94XTWHL6DT");
+  </script>
+
+  <style>
+    /* ── Page base ── */
+    body {
+      background-color: #0d1117;
+    }
+
+    /* ── HERO ── */
+    .webinar-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .webinar-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, oklch(0.08 0 0 / 0.55) 0%, oklch(0.12 0.05 25 / 0.4) 100%);
+      z-index: 0;
+    }
+
+    .webinar-hero .container { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: oklch(0.45 0.22 25 / 0.45);
+      border: 1px solid oklch(1 0 0 / 0.2);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-title span { color: #fb0825; }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 560px;
+    }
+
+    /* ── Date badge ── */
+    .date-card {
+      background: oklch(1 0 0 / 0.08);
+      border: 1px solid oklch(1 0 0 / 0.18);
+      backdrop-filter: blur(18px) saturate(1.3);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .date-big {
+      font-family: 'Jost', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      color: #fb0825;
+      line-height: 1;
+    }
+
+    .date-month {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .date-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: oklch(0.45 0.22 25 / 0.4);
+      border: 1px solid oklch(1 0 0 / 0.15);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 12px;
+    }
+
+    /* ── Speaker card ── */
+    .speaker-card {
+      background: oklch(1 0 0 / 0.08);
+      border: 1px solid oklch(1 0 0 / 0.18);
+      backdrop-filter: blur(18px) saturate(1.3);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .speaker-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c9232c, #fb0825);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      flex-shrink: 0;
+      border: 2px solid oklch(1 0 0 / 0.2);
+    }
+
+    .speaker-role {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fb0825;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .speaker-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .speaker-dept {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin: 0;
+    }
+
+    /* ── Price card ── */
+    .price-card {
+      background: oklch(1 0 0 / 0.08);
+      border: 1px solid oklch(1 0 0 / 0.18);
+      backdrop-filter: blur(18px) saturate(1.3);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .price-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+
+    .price-amount {
+      font-family: 'Jost', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .price-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+    }
+
+    .price-note strong { color: #fb0825; }
+
+    /* ── Section común ── */
+    .section-dark {
+      padding: 80px 0;
+    }
+
+    .section-badge-glass {
+      display: inline-block;
+      background: oklch(1 0 0 / 0.08);
+      border: 1px solid oklch(1 0 0 / 0.15);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .section-title-glass {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .section-title-glass span { color: #fb0825; }
+
+    .section-subtitle-glass {
+      color: rgba(255,255,255,0.65);
+      font-size: 17px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Temario cards ── */
+    .session-card {
+      background: oklch(1 0 0 / 0.07);
+      border: 1px solid oklch(1 0 0 / 0.14);
+      backdrop-filter: blur(18px) saturate(1.3);
+      border-radius: 20px;
+      padding: 36px;
+      height: 100%;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .session-card:hover {
+      background: oklch(1 0 0 / 0.11);
+      border-color: oklch(1 0 0 / 0.25);
+      transform: translateY(-4px);
+    }
+
+    .session-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, oklch(0.45 0.22 25 / 0.6), oklch(0.5 0.24 25 / 0.6));
+      border: 1px solid oklch(1 0 0 / 0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .session-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .session-objective {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid oklch(1 0 0 / 0.1);
+    }
+
+    .session-topic {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fb0825;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 16px 0 8px;
+    }
+
+    .session-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .session-item i {
+      color: #fb0825;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .session-footer {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid oklch(1 0 0 / 0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+    }
+
+    .session-footer i { color: #fb0825; }
+
+    /* ── Registration form ── */
+    .register-section {
+      padding: 80px 0;
+    }
+
+    .register-card {
+      background: oklch(1 0 0 / 0.07);
+      border: 1px solid oklch(1 0 0 / 0.15);
+      backdrop-filter: blur(20px) saturate(1.3);
+      border-radius: 24px;
+      padding: 48px;
+    }
+
+    .form-field {
+      margin-bottom: 20px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-field label i {
+      margin-right: 6px;
+      color: #fb0825;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      background: oklch(1 0 0 / 0.07);
+      border: 1px solid oklch(1 0 0 / 0.18);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #fff;
+      font-size: 15px;
+      font-family: 'Open Sans', sans-serif;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(255,255,255,0.32);
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      background: oklch(1 0 0 / 0.11);
+      border-color: oklch(1 0 0 / 0.32);
+      box-shadow: 0 0 0 3px oklch(0.55 0.22 25 / 0.2);
+    }
+
+    .form-field select option {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    .register-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      height: 100%;
+    }
+
+    .info-highlight {
+      background: oklch(0.45 0.22 25 / 0.2);
+      border: 1px solid oklch(1 0 0 / 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .info-highlight h4 {
+      font-family: 'Jost', sans-serif;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .info-highlight .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .info-highlight .check-item i {
+      color: #fb0825;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .price-highlight {
+      background: oklch(1 0 0 / 0.07);
+      border: 1px solid oklch(1 0 0 / 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .price-highlight .amount {
+      font-family: 'Jost', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .price-highlight .period {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 6px;
+    }
+
+    .price-highlight .free-note {
+      margin-top: 14px;
+      padding: 10px 16px;
+      background: oklch(0.45 0.22 25 / 0.3);
+      border: 1px solid oklch(1 0 0 / 0.12);
+      border-radius: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .price-highlight .free-note strong { color: #fb0825; }
+
+    .contact-links {
+      background: oklch(1 0 0 / 0.07);
+      border: 1px solid oklch(1 0 0 / 0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .contact-links h5 {
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-link-item:hover { color: #fb0825; }
+    .contact-link-item i { color: #fb0825; width: 18px; }
+
+    .btn-register-webinar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: oklch(0.45 0.22 25 / 0.6);
+      border: 1px solid oklch(1 0 0 / 0.22);
+      backdrop-filter: blur(14px) saturate(1.3);
+      border-radius: 50px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: 'Jost', sans-serif;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 24px oklch(0 0 0 / 0.3), inset 0 1px 0 oklch(1 0 0 / 0.15);
+      margin-top: 8px;
+    }
+
+    .btn-register-webinar:hover {
+      background: oklch(0.5 0.24 25 / 0.75);
+      box-shadow: 0 14px 36px oklch(0 0 0 / 0.45);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    /* ── Why attend ── */
+    .why-card {
+      background: oklch(1 0 0 / 0.07);
+      border: 1px solid oklch(1 0 0 / 0.13);
+      backdrop-filter: blur(14px) saturate(1.2);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      height: 100%;
+      transition: all 0.25s;
+    }
+
+    .why-card:hover {
+      background: oklch(1 0 0 / 0.11);
+      border-color: oklch(1 0 0 / 0.22);
+      transform: translateY(-4px);
+    }
+
+    .why-icon {
+      width: 60px;
+      height: 60px;
+      background: oklch(0.45 0.22 25 / 0.4);
+      border: 1px solid oklch(1 0 0 / 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .why-card h4 {
+      font-family: 'Jost', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <a href="/" class="logo me-auto">
+        <img src="assets/img/white_logo.png" alt="Protact" class="img-fluid">
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link" href="/">Inicio</a></li>
+          <li><a class="nav-link" href="/#about">Acerca de nosotros</a></li>
+          <li><a class="nav-link" href="/#services">Servicios</a></li>
+          <li><a class="nav-link" href="/blog.html">Blog</a></li>
+          <li><a class="nav-link" href="/#contact">Contacto</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero ======= -->
+  <section class="webinar-hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- Left: info -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
+          <span class="hero-badge">
+            <i class="bi bi-broadcast"></i> Webinar en vivo
+          </span>
+          <h1 class="hero-title">
+            Cómo las empresas líderes del sector hidrocarburos están usando
+            <span>Inteligencia Artificial</span> para crecer.
+          </h1>
+          <p class="hero-subtitle">
+            Aprende a usar IA para cumplimiento normativo, operación diaria y gestión de tu estación de servicio — sin ser experto en tecnología.
+          </p>
+          <a href="#registro" class="btn-register-webinar d-inline-flex" style="width:auto; padding: 14px 36px;">
+            <i class="bi bi-pencil-square"></i> Registrarme ahora
+          </a>
+        </div>
+
+        <!-- Right: date + speaker + price -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+          <div class="date-card">
+            <div class="date-big">8 y 9</div>
+            <div class="date-month">Abril 2026</div>
+            <div class="date-time">
+              <i class="bi bi-clock"></i> 12:00 PM
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-avatar">
+              <i class="bi bi-person-fill"></i>
+            </div>
+            <div>
+              <p class="speaker-role">Ponente</p>
+              <h5 class="speaker-name">Ing. Carlos Cuamatzin</h5>
+              <p class="speaker-dept">Dirección de TI — Protact</p>
+            </div>
+          </div>
+
+          <div class="price-card">
+            <p class="price-label">Cuota de recuperación</p>
+            <div class="price-amount">$580</div>
+            <p class="price-note">* <strong>Clientes Protact</strong> sin costo</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <!-- ======= Por qué asistir ======= -->
+  <section class="section-dark">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge-glass">¿Por qué asistir?</span>
+        <h2 class="section-title-glass mt-2">Lo que vas a <span>lograr</span></h2>
+        <p class="section-subtitle-glass mx-auto">En 2 sesiones prácticas, llevarás la IA a tu operación diaria desde el primer día.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-card">
+            <div class="why-icon"><i class="bi bi-lightning-charge"></i></div>
+            <h4>Aplicación inmediata</h4>
+            <p>Casos de uso reales del sector hidrocarburos que puedes implementar ese mismo día.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-card">
+            <div class="why-icon"><i class="bi bi-shield-check"></i></div>
+            <h4>Cumplimiento normativo</h4>
+            <p>Aprende cómo la IA puede ayudarte a entender y gestionar regulaciones ASEA, CRE y STPS.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-card">
+            <div class="why-icon"><i class="bi bi-camera-video"></i></div>
+            <h4>Demo en vivo</h4>
+            <p>Sesión práctica guiada — no solo teoría. Verás la herramienta en acción con ejemplos reales.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-card">
+            <div class="why-icon"><i class="bi bi-chat-square-dots"></i></div>
+            <h4>Preguntas abiertas</h4>
+            <p>Cada sesión cierra con espacio para resolver tus dudas directamente con el ponente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Temario ======= -->
+  <section class="section-dark pt-0">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge-glass">Contenido</span>
+        <h2 class="section-title-glass mt-2">Temario del <span>Webinar</span></h2>
+        <p class="section-subtitle-glass mx-auto">Dos sesiones de 2 horas cada una, diseñadas para directores y responsables de estaciones de servicio.</p>
+      </div>
+      <div class="row g-4">
+
+        <!-- Sesión 1 -->
+        <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+          <div class="session-card">
+            <div class="session-number">01</div>
+            <h3 class="session-title">Entendiendo la IA y sus casos de uso básicos</h3>
+            <p class="session-objective">Objetivo: Que el participante entienda qué es la IA y cómo puede ahorrarle tiempo hoy mismo.</p>
+
+            <p class="session-topic">Fundamentos</p>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>¿Qué es la IA y qué NO es?</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Herramientas gratuitas o baratas: ChatGPT, Claude, Gemini</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Cómo hacer buenas preguntas (prompting básico con ejemplos del sector)</span></div>
+
+            <p class="session-topic">Casos de uso inmediatos</p>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Redactar comunicados a empleados</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Responder quejas de clientes</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Crear publicaciones para redes sociales</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Generar listas de verificación operativas</span></div>
+
+            <div class="session-footer">
+              <i class="bi bi-camera-video-fill"></i>
+              <span>Demo en vivo + práctica guiada · Sesión de preguntas abiertas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sesión 2 -->
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="session-card">
+            <div class="session-number">02</div>
+            <h3 class="session-title">IA aplicada a operación y cumplimiento</h3>
+            <p class="session-objective">Objetivo: Usar IA para temas más específicos del negocio: seguridad, documentación y gestión.</p>
+
+            <p class="session-topic">IA para cumplimiento normativo</p>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Entender documentos regulatorios (ASEA, CRE, STPS)</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Generar borradores de reportes y minutas</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Hacer preguntas sobre normas sin llamar a un consultor</span></div>
+
+            <p class="session-topic">IA para la operación diaria</p>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Crear procedimientos y manuales internos</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Capacitación básica de personal (guiones, evaluaciones)</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Análisis simple de datos: ventas e inventario</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Riesgos y límites de la IA (qué no delegar, privacidad, verificación)</span></div>
+            <div class="session-item"><i class="bi bi-check-circle-fill"></i><span>Herramientas recomendadas y siguientes pasos</span></div>
+
+            <div class="session-footer">
+              <i class="bi bi-camera-video-fill"></i>
+              <span>Sesión de preguntas abiertas</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Registro ======= -->
+  <section id="registro" class="register-section">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge-glass">Cupo limitado</span>
+        <h2 class="section-title-glass mt-2">Asegura tu <span>lugar</span></h2>
+        <p class="section-subtitle-glass mx-auto">Completa el formulario y nuestro equipo te contactará para confirmar tu registro.</p>
+      </div>
+
+      <div class="row g-4 align-items-start">
+
+        <!-- Form -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
+          <div class="register-card">
+            <form action="https://formbold.com/s/3VAO9" method="POST">
+              <input type="hidden" name="webinar" value="Inteligencia Artificial — Abril 2026">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label><i class="bi bi-person"></i> Nombre completo</label>
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label><i class="bi bi-building"></i> Empresa</label>
+                    <input type="text" name="company" placeholder="Nombre de tu empresa" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label><i class="bi bi-envelope"></i> Correo electrónico</label>
+                    <input type="email" name="email" placeholder="tu@email.com" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label><i class="bi bi-phone"></i> Teléfono</label>
+                    <input type="tel" name="phone" placeholder="222 123 4567">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-field">
+                    <label><i class="bi bi-briefcase"></i> Puesto / Cargo</label>
+                    <input type="text" name="position" placeholder="Director, Gerente, Encargado...">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-field">
+                    <label><i class="bi bi-tag"></i> Tipo de registro</label>
+                    <select name="tipo_registro" required>
+                      <option value="">Selecciona una opción</option>
+                      <option value="publico">Público general — $580</option>
+                      <option value="cliente_protact">Cliente Protact — Sin costo</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-field">
+                    <label><i class="bi bi-chat-left-text"></i> ¿Qué esperas aprender? (opcional)</label>
+                    <textarea name="message" rows="3" placeholder="Cuéntanos tu interés principal en el webinar..."></textarea>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-register-webinar">
+                    <i class="bi bi-send"></i> Enviar solicitud de registro
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Side info -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+          <div class="register-info">
+
+            <div class="info-highlight">
+              <h4><i class="bi bi-calendar-check me-2"></i>Detalles del evento</h4>
+              <div class="check-item"><i class="bi bi-check-circle-fill"></i><span><strong>Fechas:</strong> 8 y 9 de Abril 2026</span></div>
+              <div class="check-item"><i class="bi bi-check-circle-fill"></i><span><strong>Horario:</strong> 12:00 PM (hora Ciudad de México)</span></div>
+              <div class="check-item"><i class="bi bi-check-circle-fill"></i><span><strong>Modalidad:</strong> En línea — enlace por correo</span></div>
+              <div class="check-item"><i class="bi bi-check-circle-fill"></i><span><strong>Duración:</strong> ~2 horas por sesión</span></div>
+              <div class="check-item"><i class="bi bi-check-circle-fill"></i><span><strong>Ponente:</strong> Ing. Carlos Cuamatzin, Dir. TI</span></div>
+            </div>
+
+            <div class="price-highlight">
+              <p class="price-label" style="font-size:13px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Cuota de recuperación</p>
+              <div class="amount">$580</div>
+              <p class="period">MXN · pago único por las 2 sesiones</p>
+              <div class="free-note">
+                <i class="bi bi-star-fill me-1" style="color:#fb0825;"></i>
+                <strong>Clientes Protact</strong> acceden sin costo
+              </div>
+            </div>
+
+            <div class="contact-links">
+              <h5><i class="bi bi-headset me-2"></i>¿Tienes dudas?</h5>
+              <a href="tel:+522221642784" class="contact-link-item">
+                <i class="bi bi-telephone-fill"></i> 222 164 2784
+              </a>
+              <a href="https://wa.me/5212221642784?text=Hola,%20me%20interesa%20el%20webinar%20de%20IA" target="_blank" class="contact-link-item">
+                <i class="bi bi-whatsapp"></i> WhatsApp directo
+              </a>
+              <a href="mailto:comercial@protact.mx" class="contact-link-item">
+                <i class="bi bi-envelope-fill"></i> comercial@protact.mx
+              </a>
+              <a href="https://www.protact.mx" class="contact-link-item">
+                <i class="bi bi-globe"></i> www.protact.mx
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <img src="assets/img/white_logo.png" alt="Protact" style="height:48px; margin-bottom:16px;">
+            <p>Tu aliado estratégico en el cumplimiento normativo del sector hidrocarburos.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Sitio web</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i><a href="/">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i><a href="/#about">Acerca de nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i><a href="/#services">Servicios</a></li>
+              <li><i class="bx bx-chevron-right"></i><a href="/blog.html">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i><a href="/#contact">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Contacto</h4>
+            <p><i class="bi bi-telephone me-2"></i>222 164 2784</p>
+            <p><i class="bi bi-envelope me-2"></i>comercial@protact.mx</p>
+            <p><i class="bi bi-globe me-2"></i>www.protact.mx</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">© 2026 <strong>PROTACT</strong>. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>AOS.init({ duration: 600, easing: 'ease-in-out', once: true });</script>
+
+</body>
+</html>
