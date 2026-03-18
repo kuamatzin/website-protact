@@ -120,91 +120,15 @@
     }
 
     /* ─── Hero side cards ─── */
-    .hero-event-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 28px;
-      margin-bottom: 16px;
-      color: #fff;
+    .hero-promo-img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.12);
+      display: block;
+      margin: 0 auto;
     }
 
-    .hero-date-big {
-      font-family: 'Jost', sans-serif;
-      font-size: 60px;
-      font-weight: 900;
-      line-height: 1;
-      color: #fff;
-    }
-
-    .hero-date-month {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-    }
-
-    .hero-time-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      padding: 7px 18px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 14px;
-      margin-top: 12px;
-    }
-
-    .hero-speaker-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 22px 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-
-    .speaker-av {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: 2px solid rgba(255,255,255,0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; color: #fff; flex-shrink: 0;
-    }
-
-    .speaker-av-role { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #ffb3b3; font-weight: 600; }
-    .speaker-av-name { font-family: 'Jost', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
-    .speaker-av-dept { font-size: 13px; color: rgba(255,255,255,0.6); }
-
-    .hero-price-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 22px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .hero-price-amount {
-      font-family: 'Jost', sans-serif;
-      font-size: 40px;
-      font-weight: 900;
-      color: #c9232c;
-      line-height: 1;
-    }
-
-    .hero-price-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-    .hero-price-free { font-size: 13px; color: #2c2c2c; font-weight: 600; }
-    .hero-price-free strong { color: #c9232c; }
 
     /* ─── Section 2: Por qué asistir — WHITE ─── */
     .wbr-why {
@@ -571,34 +495,8 @@
           </a>
         </div>
 
-        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100">
-          <div class="hero-event-card text-center">
-            <div class="hero-date-big">8 y 9</div>
-            <div class="hero-date-month">Abril 2026</div>
-            <div class="hero-time-pill">
-              <i class="bi bi-clock"></i> 12:00 PM · Hora CDMX
-            </div>
-          </div>
-
-          <div class="hero-speaker-card">
-            <div class="speaker-av"><i class="bi bi-person-fill"></i></div>
-            <div>
-              <div class="speaker-av-role">Ponente</div>
-              <div class="speaker-av-name">Ing. Carlos Cuamatzin</div>
-              <div class="speaker-av-dept">Dirección de TI — Protact</div>
-            </div>
-          </div>
-
-          <div class="hero-price-card">
-            <div>
-              <div class="hero-price-label">Cuota de recuperación</div>
-              <div class="hero-price-amount">$580</div>
-            </div>
-            <div class="text-end">
-              <div class="hero-price-free">* <strong>Clientes Protact</strong></div>
-              <div class="hero-price-free">sin costo</div>
-            </div>
-          </div>
+        <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="100">
+          <img src="assets/img/consultor.jpeg" alt="Webinar IA — Ing. Carlos Cuamatzin, Protact" class="hero-promo-img">
         </div>
 
       </div>
