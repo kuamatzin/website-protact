@@ -1,0 +1,722 @@
+/**
+ * glass.css — Glassmorphism Design System for PROTACT
+ * Tokens ported from glasscn-ui / cumple-docs
+ */
+
+/* ============================================================
+   1. GLASS TOKENS
+   ============================================================ */
+:root {
+  --glass:              oklch(1 0 0 / 0.07);
+  --glass-medium:       oklch(1 0 0 / 0.10);
+  --glass-heavy:        oklch(1 0 0 / 0.15);
+  --glass-border:       oklch(1 0 0 / 0.15);
+  --glass-border-strong:oklch(1 0 0 / 0.28);
+  --glass-blur:         blur(18px) saturate(1.3);
+  --glass-blur-sm:      blur(10px) saturate(1.2);
+  --glass-shadow:       0 8px 32px oklch(0 0 0 / 0.35);
+  --glass-shadow-hover: 0 16px 48px oklch(0 0 0 / 0.5);
+}
+
+/* ============================================================
+   2. GLOBAL BACKGROUND
+   Image lives on body (fixed) — every section is transparent.
+   ============================================================ */
+
+body {
+  background-color: #0d1117 !important;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('../img/glass-bg.webp');
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.85);
+  transform: scale(1.05); /* prevents blur edge bleed */
+}
+
+#clients.clients-modern,
+#about.about-modern,
+#why-us.why-us-modern,
+#skills.skills-modern,
+#cta.cta-modern,
+#services.services-modern,
+#contact.contact-modern {
+  background: transparent !important;
+}
+
+/* Blog gets its own generated image */
+#blog.blog-preview-modern {
+  background-image: url('../img/blog-bg.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: scroll !important;
+  position: relative !important;
+}
+
+/* Hero gets its own generated image */
+#hero {
+  background-image: url('../img/hero-bg.png') !important;
+  background-size: 55% auto !important;
+  background-position: right center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  position: relative !important;
+}
+
+#hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+#hero h1,
+#hero h2 {
+  color: #1a1a1a !important;
+  text-shadow: none !important;
+}
+
+#hero .logo-home {
+  filter: brightness(0) !important; /* makes white logo black */
+}
+
+/* ============================================================
+   3. GLOBAL TEXT OVERRIDES FOR DARK SECTIONS
+   ============================================================ */
+#blog, #clients, #about, #why-us, #skills, #services, #contact {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#blog .section-title-modern,
+#clients .section-title-modern,
+#about .section-title-modern,
+#why-us .section-title-modern,
+#skills .section-title-modern,
+#services .section-title-modern,
+#contact .section-title-modern {
+  color: #fff !important;
+}
+
+#blog .section-subtitle,
+#clients .section-subtitle,
+#about .section-subtitle,
+#why-us .section-subtitle,
+#skills .section-subtitle,
+#services .section-subtitle,
+#contact .section-subtitle {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+#blog .section-badge,
+#clients .section-badge,
+#about .section-badge,
+#why-us .section-badge,
+#skills .section-badge,
+#services .section-badge,
+#contact .section-badge {
+  background: var(--glass-medium) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+}
+
+/* ============================================================
+   4. NAVBAR — glass header
+   ============================================================ */
+#header {
+  background: oklch(0.08 0 0 / 0.7) !important;
+  backdrop-filter: blur(20px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.4) !important;
+  border-bottom: 1px solid oklch(1 0 0 / 0.08) !important;
+}
+
+/* ============================================================
+   5. BLOG SECTION
+   ============================================================ */
+.featured-blog-post {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.featured-blog-post:hover {
+  background: var(--glass-medium) !important;
+  box-shadow: var(--glass-shadow-hover) !important;
+}
+
+.featured-blog-title {
+  color: #fff !important;
+}
+
+.featured-blog-excerpt {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.featured-blog-meta {
+  border-top: 1px solid oklch(1 0 0 / 0.1) !important;
+}
+
+.post-date,
+.reading-time {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.author-mini span {
+  color: #fff !important;
+}
+
+.blog-info-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.blog-info-card h3,
+.blog-info-card h4 {
+  color: #fff !important;
+}
+
+.blog-info-card > p,
+.topic-item span {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.newsletter-mini {
+  background: oklch(1 0 0 / 0.05) !important;
+  border: 1px solid oklch(1 0 0 / 0.1) !important;
+}
+
+.newsletter-mini p {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ============================================================
+   6. CLIENTS SECTION
+   ============================================================ */
+.client-logo-wrapper {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+}
+
+.clients-modern .stat-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.clients-modern .stat-card h3 {
+  color: #fff !important;
+}
+
+.clients-modern .stat-card p {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.clients-modern .stat-card i {
+  color: #fb0825 !important;
+}
+
+/* ============================================================
+   7. ABOUT SECTION
+   ============================================================ */
+.info-card.mission-card,
+.info-card.vision-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.info-card h3 {
+  color: #fff !important;
+}
+
+.info-card p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.values-section {
+  background: transparent !important;
+}
+
+.value-item {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+}
+
+.value-item h4 {
+  color: #fff !important;
+}
+
+.value-item p {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.subsection-title {
+  color: #fff !important;
+}
+
+.expertise-content h3,
+.expertise-content .lead-text {
+  color: #fff !important;
+}
+
+.expertise-content p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.expertise-stats .stat-number {
+  color: #fb0825 !important;
+}
+
+.expertise-stats .stat-label {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.floating-element {
+  background: var(--glass-medium) !important;
+  border: 1px solid var(--glass-border-strong) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+}
+
+.about-cta h3 {
+  color: #fff !important;
+}
+
+.about-cta p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* ============================================================
+   8. WHY US SECTION
+   ============================================================ */
+.intro-text h3 {
+  color: #fff !important;
+}
+
+.intro-text p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.process-item {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+}
+
+.process-header h4,
+.process-header .step-summary {
+  color: #fff !important;
+}
+
+.step-summary {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.process-body p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.process-body .feature span {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.cta-note {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.floating-stat {
+  background: var(--glass-medium) !important;
+  border: 1px solid var(--glass-border-strong) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.floating-stat .stat-value {
+  color: #fff !important;
+}
+
+.floating-stat .stat-label {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.benefits-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+}
+
+.benefits-card h5 {
+  color: #fff !important;
+}
+
+.benefits-list li {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* ============================================================
+   9. SKILLS SECTION
+   ============================================================ */
+.skills-title {
+  color: #fff !important;
+}
+
+.skills-description {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.skill-item {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.skill-item h4 {
+  color: #fff !important;
+}
+
+.skill-item p {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.percentage-value {
+  color: #fb0825 !important;
+}
+
+.percentage-label {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.skills-badge {
+  background: var(--glass-medium) !important;
+  border: 1px solid var(--glass-border-strong) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+  color: #fff !important;
+}
+
+/* ============================================================
+   10. CTA SECTION
+   ============================================================ */
+.cta-title,
+.cta-badge span {
+  color: #fff !important;
+}
+
+.cta-description {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.cta-feature span {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.cta-wrapper {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border-strong) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border-radius: 24px;
+  padding: 48px;
+}
+
+/* ============================================================
+   11. SERVICES SECTION
+   ============================================================ */
+.service-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.service-card:hover,
+.service-card.active {
+  background: var(--glass-heavy) !important;
+  border-color: var(--glass-border-strong) !important;
+  box-shadow: var(--glass-shadow-hover) !important;
+}
+
+.service-card-header {
+  background: transparent !important;
+}
+
+.service-card-footer {
+  background: oklch(0 0 0 / 0.1) !important;
+  border-top: 1px solid var(--glass-border) !important;
+}
+
+.service-card p,
+.feature-item,
+.service-badge {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.services-grid {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.service-item {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+}
+
+.service-item:hover {
+  background: var(--glass-medium) !important;
+  box-shadow: 0 5px 20px oklch(0 0 0 / 0.3) !important;
+}
+
+.service-group {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.group-title {
+  color: #fff !important;
+}
+
+.service-item strong {
+  color: #fff !important;
+}
+
+.service-item p {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.details-title {
+  color: #fff !important;
+}
+
+.details-description {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* ============================================================
+   12. CONTACT SECTION
+   ============================================================ */
+.contact-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+  border-radius: 20px;
+}
+
+.info-title {
+  color: #fff !important;
+}
+
+.info-description {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.contact-item h4 {
+  color: #fff !important;
+}
+
+.contact-item p,
+.contact-item a {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.contact-item a:hover {
+  color: #fb0825 !important;
+}
+
+.social-links-card h4 {
+  color: #fff !important;
+}
+
+.map-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--glass-blur-sm) !important;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.form-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+  border-radius: 20px;
+}
+
+.form-title {
+  color: #fff !important;
+}
+
+.form-description {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.form-label-modern {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.form-control-modern {
+  background: oklch(1 0 0 / 0.07) !important;
+  border: 1px solid oklch(1 0 0 / 0.18) !important;
+  color: #fff !important;
+}
+
+.form-control-modern::placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.form-control-modern:focus {
+  background: oklch(1 0 0 / 0.11) !important;
+  border-color: oklch(1 0 0 / 0.32) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px oklch(0.55 0.22 25 / 0.25) !important;
+}
+
+/* select option needs solid background to be readable */
+.form-control-modern option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+/* ============================================================
+   13. BUTTONS — glass variants for all button types
+   ============================================================ */
+
+/* --- Shared base for all glass buttons --- */
+[class*="btn-"] {
+  backdrop-filter: blur(14px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.3) !important;
+}
+
+/* --- Red / primary buttons --- */
+.btn-modern-gradient,
+.btn-modern-primary,
+.btn-primary-minimal,
+.btn-hero-primary,
+.btn-cta-primary,
+.btn-submit-modern,
+.btn-register {
+  background: oklch(0.45 0.22 25 / 0.55) !important;
+  border: 1px solid oklch(1 0 0 / 0.22) !important;
+  box-shadow: 0 8px 24px oklch(0 0 0 / 0.3), inset 0 1px 0 oklch(1 0 0 / 0.15) !important;
+  color: #fff !important;
+}
+
+.btn-modern-gradient:hover,
+.btn-modern-primary:hover,
+.btn-primary-minimal:hover,
+.btn-hero-primary:hover,
+.btn-cta-primary:hover,
+.btn-submit-modern:hover,
+.btn-register:hover {
+  background: oklch(0.5 0.24 25 / 0.68) !important;
+  border-color: oklch(1 0 0 / 0.35) !important;
+  box-shadow: 0 14px 36px oklch(0 0 0 / 0.45), inset 0 1px 0 oklch(1 0 0 / 0.22) !important;
+  color: #fff !important;
+}
+
+/* --- White / outline buttons --- */
+.btn-outline-modern,
+.btn-primary-modern,
+.btn-agenda,
+.btn-hero-secondary,
+.btn-cta-phone,
+.btn-read-article,
+.btn-select-service {
+  background: oklch(1 0 0 / 0.1) !important;
+  border: 1px solid oklch(1 0 0 / 0.28) !important;
+  box-shadow: 0 6px 20px oklch(0 0 0 / 0.25), inset 0 1px 0 oklch(1 0 0 / 0.18) !important;
+  color: #fff !important;
+}
+
+.btn-outline-modern:hover,
+.btn-primary-modern:hover,
+.btn-agenda:hover,
+.btn-hero-secondary:hover,
+.btn-cta-phone:hover,
+.btn-read-article:hover,
+.btn-select-service:hover {
+  background: oklch(1 0 0 / 0.18) !important;
+  border-color: oklch(1 0 0 / 0.45) !important;
+  box-shadow: 0 12px 32px oklch(0 0 0 / 0.35), inset 0 1px 0 oklch(1 0 0 / 0.25) !important;
+  color: #fff !important;
+}
+
+/* --- WhatsApp button --- */
+.btn-cta-whatsapp,
+.btn-secondary-minimal {
+  background: oklch(0.58 0.18 145 / 0.5) !important;
+  border: 1px solid oklch(1 0 0 / 0.22) !important;
+  box-shadow: 0 8px 24px oklch(0 0 0 / 0.3), inset 0 1px 0 oklch(1 0 0 / 0.15) !important;
+  color: #fff !important;
+}
+
+.btn-cta-whatsapp:hover,
+.btn-secondary-minimal:hover {
+  background: oklch(0.62 0.2 145 / 0.65) !important;
+  border-color: oklch(1 0 0 / 0.35) !important;
+  color: #fff !important;
+}
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+#footer {
+  background: oklch(0.08 0 0 / 0.82) !important;
+  backdrop-filter: blur(20px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
+  border-top: none !important;
+  position: relative;
+}
+
+#footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.15), transparent);
+}
+
+/* Smooth fade from page content into footer */
+#main > section:last-of-type {
+  padding-bottom: 80px;
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
